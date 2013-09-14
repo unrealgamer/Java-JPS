@@ -6,11 +6,13 @@ package com.unreal.jps;
  */
 public class Grid {
     
-    private Node[][] myNodes;
+    private GridNode[][] myNodes;
     
     public Grid(int width, int height)
     {
-        this.myNodes = new Node[width][height];
+        this.myNodes = new GridNode[width][height];
     }
+    
+    
     
 }

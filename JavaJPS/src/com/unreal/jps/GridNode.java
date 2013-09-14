@@ -8,16 +8,18 @@ public class GridNode extends Node{
 
     private int myX, myY;
     
-    public GridNode(int x, int y)
+    public GridNode(int x, int y, boolean isPassible)
     {
         this.myX = x;
         this.myY = y;
+        this.setPassible(isPassible);
     }
     
-    public GridNode(int x, int y, Node parent)
+    public GridNode(int x, int y, boolean isPassible, Node parent)
     {
         this.myX = x; 
         this.myY = y;
+        this.setPassible(isPassible);
         this.setParent(parent);
     }
     
