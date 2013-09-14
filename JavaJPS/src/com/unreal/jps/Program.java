@@ -23,7 +23,7 @@ public class Program {
         pq.add(10); System.out.println(pq);
         pq.add(30); System.out.println(pq);
         pq.add(20); System.out.println(pq);
-        pq.add(34); System.out.println(pq);    
+        pq.add(34); System.out.println(pq);
         pq.add(38); System.out.println(pq);
         pq.add(30); System.out.println(pq);
         pq.add(24); System.out.println(pq);
@@ -32,7 +32,7 @@ public class Program {
         pq.add(10); System.out.println(pq);
         pq.add(30); System.out.println(pq);
         pq.add(20); System.out.println(pq);
-        pq.add(34); System.out.println(pq);    
+        pq.add(34); System.out.println(pq);
         pq.add(38); System.out.println(pq);
         pq.add(30); System.out.println(pq);
         pq.add(24); System.out.println(pq);
