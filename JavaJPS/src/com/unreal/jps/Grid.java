@@ -18,9 +18,9 @@ public class Grid {
         return this.myNodes[x][y];
     }
     
-    public boolean isPassible(int x, int y)
+    public boolean isPassable(int x, int y)
     {
-        return this.myNodes[x][y].isPassible();
+        return this.myNodes[x][y].isPassable();
     }
     
 }
