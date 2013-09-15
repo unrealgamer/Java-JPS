@@ -77,7 +77,7 @@ public class PathFinder {
         int numNodes = 0;
         if (direction.x == 0) {
             //Direction is vertical
-            if (!myGrid.getNode(origin.getX()() + 1, origin.getY()).isPassable() && myGrid.getNode(origin.getX() + 1, origin.getY() + direction.y).isPassable()) {
+            if (!myGrid.getNode(origin.getX() + 1, origin.getY()).isPassable() && myGrid.getNode(origin.getX() + 1, origin.getY() + direction.y).isPassable()) {
                 //found forced neighbor to the right and ahead
                 pathNodes[numNodes] = myGrid.getNode(origin.getX() + 1, origin.getY() + direction.y);
                 numNodes++;
