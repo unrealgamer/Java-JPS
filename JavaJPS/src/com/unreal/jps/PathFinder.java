@@ -36,8 +36,8 @@ public class PathFinder {
                 //check direction away from parentnode
                 int px = parentNode.getX(), py = parentNode.getY();
 
-                int dx = (node.getX() - px) / Math.abs(node.getX() - px);
-                int dy = (node.getY() - py) / Math.abs(node.getY() - py);
+                int dx = (node.getX() - px) / Math.max(Math.abs(node.getX() - px), 1);
+                int dy = (node.getY() - py) / Math.max(Math.abs(node.getY() - py), 1);
 
                 searchRay(theGrid, openList, node, endNode, dx, dy);
             } else {
