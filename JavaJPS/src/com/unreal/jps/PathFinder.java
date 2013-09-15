@@ -95,6 +95,7 @@ public class PathFinder {
                     openList.add(node);
                 }
             }
+            step++;
         } while (theGrid.getNode(tempX + dx, tempY + dy) != null && theGrid.getNode(tempX + dx, tempY + dy).isPassable());
     }
 
