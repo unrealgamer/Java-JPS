@@ -43,14 +43,7 @@ public abstract class Node implements Comparable{
     {
         this.isPassable = val;
     }
-    public boolean isPassible()
-    {
-        return false;
-    }
-    public void setPassible(boolean val)
-    {
-        throw new UnsupportedOperationException("GRID NODES SHALL NOT HAVE FEELINGS >:l");
-    }
+    
     @Override
     public int compareTo(Object t) {
         if(!(t instanceof Node))
