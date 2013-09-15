@@ -77,38 +77,38 @@ public class PathFinder {
         int numNodes = 0;
         if (direction.x == 0) {
             //Direction is vertical
-            if (!myGrid.getNode(origin.getX() + 1, origin.y).isPassable() && myGrid.getNode(origin.x + 1, origin.y + direction.y).isPassable()) {
+            if (!myGrid.getNode(origin.getX() + 1, origin.getY).isPassable() && myGrid.getNode(origin.getX + 1, origin.getY + direction.y).isPassable()) {
                 //found forced neighbor to the right and ahead
-                pathNodes[numNodes] = myGrid.getNode(origin.x + 1, origin.y + direction.y);
+                pathNodes[numNodes] = myGrid.getNode(origin.getX + 1, origin.getY + direction.y);
                 numNodes++;
             }
-            if (!myGrid.getNode(origin.x - 1, origin.y).isPassable() && myGrid.getNode(origin.x - 1, origin.y + direction.y).isPassable()) {
+            if (!myGrid.getNode(origin.getX - 1, origin.getY).isPassable() && myGrid.getNode(origin.getX - 1, origin.getY + direction.y).isPassable()) {
                 //found forced neighbor to the left and ahead
-                pathNodes[numNodes] = myGrid.getNode(origin.x - 1, origin.y + direction.y);
+                pathNodes[numNodes] = myGrid.getNode(origin.getX - 1, origin.getY + direction.y);
                 numNodes++;
             }
         } else if (direction.y == 0) {
             //Direction is horizontal
-            if (!myGrid.getNode(origin.x, origin.y + 1).isPassable() && myGrid.getNode(origin.x + direction.x, origin.y + 1).isPassable()) {
+            if (!myGrid.getNode(origin.getX, origin.getY + 1).isPassable() && myGrid.getNode(origin.getX + direction.x, origin.getY + 1).isPassable()) {
                 //Found forced neighbor above and ahead
-                pathNodes[numNodes] = myGrid.getNode(origin.x + direction.x, origin.y + 1);
+                pathNodes[numNodes] = myGrid.getNode(origin.getX + direction.x, origin.getY + 1);
                 numNodes++;
             }
-            if (!myGrid.getNode(origin.x, origin.y - 1).isPassable() && myGrid.getNode(origin.x + direction.x, origin.y - 1).isPassable()) {
+            if (!myGrid.getNode(origin.getX, origin.getY - 1).isPassable() && myGrid.getNode(origin.getX + direction.x, origin.getY - 1).isPassable()) {
                 //Found forced neighbor below and ahead
-                pathNodes[numNodes] = myGrid.getNode(origin.x + direction.x, origin.y - 1);
+                pathNodes[numNodes] = myGrid.getNode(origin.getX + direction.x, origin.getY - 1);
                 numNodes++;
             }
         } else {
             //Direction is diagonal
-            if (!myGrid.getNode(origin.x - direction.x, origin.y) && myGrid.getNode(origin.x - direction.x, origin.y + direction.y)) {
+            if (!myGrid.getNode(origin.getX - direction.x, origin.getY) && myGrid.getNode(origin.getX - direction.x, origin.getY + direction.y)) {
                 //found forced neighbor to side A
-                pathNodes[numNodes] = myGrid.getNode(origin.x - direction.x, origin.y + direction.y);
+                pathNodes[numNodes] = myGrid.getNode(origin.getX - direction.x, origin.getY + direction.y);
                 numNodes++;
             }
-            if (!myGrid.getNode(origin.x, origin.y - direction.y) && myGrid.getNode(origin.x + direction.x, origin.y - direction.y)) {
+            if (!myGrid.getNode(origin.getX, origin.getY - direction.y) && myGrid.getNode(origin.getX + direction.x, origin.getY - direction.y)) {
                 //found forced neighbor to side B
-                pathNodes[numNodes] = myGrid.getNode(origin.x + direction.x, origin.y - direction.y);
+                pathNodes[numNodes] = myGrid.getNode(origin.getX + direction.x, origin.getY - direction.y);
                 numNodes++;
             }
         }
