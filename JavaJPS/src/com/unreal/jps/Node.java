@@ -8,7 +8,7 @@ public abstract class Node implements Comparable{
     
     private Node myParentNode;
     
-    private boolean isPassible = true;
+    private boolean isPassable = true;
     
     /**
      * Gets this nodes FScore
@@ -34,16 +34,23 @@ public abstract class Node implements Comparable{
         this.myParentNode = parentNode;
     }//end setParent
     
+    public boolean isPassable()
+    {
+        return this.isPassable;
+    }
+    
+    public void setPassable(boolean val)
+    {
+        this.isPassable = val;
+    }
     public boolean isPassible()
     {
-        return this.isPassible;
+        return false;
     }
-    
     public void setPassible(boolean val)
     {
-        this.isPassible = val;
+        throw new UnsupportedOperationException("GRID NODES SHALL NOT HAVE FEELINGS >:l");
     }
-    
     @Override
     public int compareTo(Object t) {
         if(!(t instanceof Node))
