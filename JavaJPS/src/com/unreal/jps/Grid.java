@@ -13,6 +13,14 @@ public class Grid {
         this.myNodes = new GridNode[width][height];
     }
     
+    public GridNode getNode(int x, int y)
+    {
+        return this.myNodes[x][y];
+    }
     
+    public boolean isPassible(int x, int y)
+    {
+        return this.myNodes[x][y].isPassible();
+    }
     
 }
