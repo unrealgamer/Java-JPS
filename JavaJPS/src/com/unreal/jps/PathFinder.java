@@ -15,10 +15,6 @@ import java.util.ArrayList;
  */
 public class PathFinder {
 
-    
-   
-    
-    /*
     public static GridNode[] findForcedNeighbors(Grid myGrid, GridNode origin, Vector2 direction) {
         GridNode[] pathNodes = new GridNode[2];
         int numNodes = 0;
@@ -60,5 +56,6 @@ public class PathFinder {
             }
         }
         return pathNodes;
-    }*/
+    }
+
 }
