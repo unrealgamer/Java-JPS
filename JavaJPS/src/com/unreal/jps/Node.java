@@ -8,7 +8,7 @@ public abstract class Node implements Comparable{
     
     private Node myParentNode;
     
-    private boolean isPassible = true;
+    private boolean isPassable = true;
     
     /**
      * Gets this nodes FScore
@@ -34,14 +34,14 @@ public abstract class Node implements Comparable{
         this.myParentNode = parentNode;
     }//end setParent
     
-    public boolean isPassible()
+    public boolean isPassable()
     {
-        return this.isPassible;
+        return this.isPassable;
     }
     
-    public void setPassible(boolean val)
+    public void setPassable(boolean val)
     {
-        this.isPassible = val;
+        this.isPassable = val;
     }
     
     @Override

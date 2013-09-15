@@ -60,10 +60,11 @@ public class PathFinder {
             
             if(dx != 0 && dy != 0)
             {
-                if(theGrid.isPassible(x, y + dy))
+                if(theGrid.isPassable(x, y + dy))
                     neighbors.add(theGrid.getNode(x, y + dy));
-                if(theGrid.isPassible(x + dx, y))
+                if(theGrid.isPassable(x + dx, y))
                     neighbors.add(theGrid.getNode(x + dx, y));
+                if(theGrid.isPassable(x, y + dy) ||)
             }
             
         }
