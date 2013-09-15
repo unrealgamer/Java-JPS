@@ -17,4 +17,9 @@ public class Vector2 {
         x = inX;
         y = inY;
     }
+    
+    public double getMagnitude()
+    {
+        return Math.sqrt(this.x^2 + this.y^2);
+    }
 }
