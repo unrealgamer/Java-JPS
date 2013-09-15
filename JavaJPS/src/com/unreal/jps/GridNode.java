@@ -22,7 +22,7 @@ public class GridNode extends Node{
         this.setPassable(isPassable);
         this.setParent(parent);
     }
-    
+
     public void setLocation(int x, int y) {
         this.myX = x; this.myY = y;
     }
