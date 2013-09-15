@@ -101,12 +101,12 @@ public class PathFinder {
             }
         } else {
             //Direction is diagonal
-            if (!myGrid.getNode(origin.getX() - direction.x, origin.getY()) && myGrid.getNode(origin.getX() - direction.x, origin.getY() + direction.y)) {
+            if (!myGrid.getNode(origin.getX() - direction.x, origin.getY()).isPassable() && myGrid.getNode(origin.getX() - direction.x, origin.getY() + direction.y).isPassable()) {
                 //found forced neighbor to side A
                 pathNodes[numNodes] = myGrid.getNode(origin.getX() - direction.x, origin.getY() + direction.y);
                 numNodes++;
             }
-            if (!myGrid.getNode(origin.getX(), origin.getY() - direction.y) && myGrid.getNode(origin.getX() + direction.x, origin.getY() - direction.y)) {
+            if (!myGrid.getNode(origin.getX(), origin.getY() - direction.y).isPassable() && myGrid.getNode(origin.getX() + direction.x, origin.getY() - direction.y).isPassable()) {
                 //found forced neighbor to side B
                 pathNodes[numNodes] = myGrid.getNode(origin.getX() + direction.x, origin.getY() - direction.y);
                 numNodes++;
