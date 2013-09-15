@@ -12,17 +12,17 @@ import java.util.ArrayList;
  */
 public class BinaryHeap implements PriorityQueue {
 
-    private ArrayListOne<Comparable> myList;
+    private BinaryHeap.ArrayListOne<Comparable> myList;
     
     public BinaryHeap()
     {
-        myList = new ArrayListOne<>();
+        myList = new BinaryHeap.ArrayListOne<>();
     }
     
     public BinaryHeap(Comparable initialNode)
     {
-        myList = new ArrayListOne<>();
-        myList.add(initialNode);
+        myList = new BinaryHeap.ArrayListOne<>();
+        myList.add(1, initialNode);
     }
     
     @Override
@@ -53,7 +53,11 @@ public class BinaryHeap implements PriorityQueue {
     @Override
     public Comparable pop() {
         
+        if(myList.size() == 1)
+            return myList.remove(size());
+        
         Comparable retValue = pull();
+
         myList.set(1, myList.remove(size()));
         
         int index = 1, ch1i = 2, ch2i = 3;
@@ -102,6 +106,12 @@ public class BinaryHeap implements PriorityQueue {
     @Override
     public int size() {
         return myList.size();
+    }
+    
+    @Override
+    public boolean contains(Comparable comp)
+    {
+        return myList.contains(comp);
     }
     
     /**

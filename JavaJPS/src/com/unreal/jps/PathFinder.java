@@ -15,11 +15,11 @@ import java.util.ArrayList;
  */
 public class PathFinder {
 
-    public static void jumpPointSearch(Grid theGrid, int startX, int startY, int endX, int endY) {
+    public static void jumpPointSearch(Grid theGrid) {
         PriorityQueue openList = new BinaryHeap();
 
-        GridNode startNode = theGrid.getNode(startX, startY);
-        GridNode endNode = theGrid.getNode(endX, endY);
+        GridNode startNode = theGrid.getStart();
+        GridNode endNode = theGrid.getEnd();
 
         openList.add(startNode);
 
@@ -27,7 +27,7 @@ public class PathFinder {
             GridNode node = (GridNode) openList.pop();
 
             if (node.equals(endNode)) {
-                return;
+                theGrid.printPath(backTrace(node));
             }
             //findSuccessors(node, theGrid);
 
@@ -51,6 +51,18 @@ public class PathFinder {
         }
     }
 
+    private static ArrayList<GridNode> backTrace(GridNode theNode)
+    {
+        ArrayList<GridNode> thePath = new ArrayList<>();
+        GridNode parent = theNode;
+        while(parent != null)
+        {
+            thePath.add(parent);
+            parent = (GridNode)parent.getParent();
+        }
+        return thePath;
+    }
+    
     private static void searchRay(Grid theGrid, PriorityQueue openList, GridNode origin, GridNode goal, int dx, int dy) {
         int px = origin.getX();
         int py = origin.getY();
@@ -83,33 +95,33 @@ public class PathFinder {
                     openList.add(node);
                 }
             }
-        } while (theGrid.getNode(tempX + dx, tempY + dy).isPassable());
+        } while (theGrid.getNode(tempX + dx, tempY + dy) != null && theGrid.getNode(tempX + dx, tempY + dy).isPassable());
     }
 
     public static ArrayList<GridNode> findForcedNeighbors(Grid myGrid, GridNode origin, Vector2 direction) {
         ArrayList<GridNode> pathNodes = new ArrayList();
         if (direction.x == 0) {
             //Direction is vertical
-            if (!myGrid.getNode(origin.getX() + 1, origin.getY()).isPassable() && myGrid.getNode(origin.getX() + 1, origin.getY() + direction.y).isPassable()) {
+            if (myGrid.getNode(origin.getX() + 1, origin.getY()) != null && !myGrid.getNode(origin.getX() + 1, origin.getY()).isPassable() && myGrid.getNode(origin.getX() + 1, origin.getY() + direction.y) != null && myGrid.getNode(origin.getX() + 1, origin.getY() + direction.y).isPassable()) {
                 pathNodes.add(myGrid.getNode(origin.getX() + 1, origin.getY() + direction.y));
             }
-            if (!myGrid.getNode(origin.getX() - 1, origin.getY()).isPassable() && myGrid.getNode(origin.getX() - 1, origin.getY() + direction.y).isPassable()) {
+            if (myGrid.getNode(origin.getX() - 1, origin.getY()) != null && !myGrid.getNode(origin.getX() - 1, origin.getY()).isPassable() && myGrid.getNode(origin.getX() - 1, origin.getY() + direction.y) != null && myGrid.getNode(origin.getX() - 1, origin.getY() + direction.y).isPassable()) {
                 pathNodes.add(myGrid.getNode(origin.getX() - 1, origin.getY() + direction.y));
             }
         } else if (direction.y == 0) {
             //Direction is horizontal
-            if (!myGrid.getNode(origin.getX(), origin.getY() + 1).isPassable() && myGrid.getNode(origin.getX() + direction.x, origin.getY() + 1).isPassable()) {
+            if (myGrid.getNode(origin.getX(), origin.getY() + 1) != null && !myGrid.getNode(origin.getX(), origin.getY() + 1).isPassable() && myGrid.getNode(origin.getX() + direction.x, origin.getY() + 1) != null && myGrid.getNode(origin.getX() + direction.x, origin.getY() + 1).isPassable()) {
                 pathNodes.add(myGrid.getNode(origin.getX() + direction.x, origin.getY() + 1));
             }
-            if (!myGrid.getNode(origin.getX(), origin.getY() - 1).isPassable() && myGrid.getNode(origin.getX() + direction.x, origin.getY() - 1).isPassable()) {
+            if (myGrid.getNode(origin.getX(), origin.getY() - 1) != null && !myGrid.getNode(origin.getX(), origin.getY() - 1).isPassable() && myGrid.getNode(origin.getX() + direction.x, origin.getY() - 1) != null && myGrid.getNode(origin.getX() + direction.x, origin.getY() - 1).isPassable()) {
                 pathNodes.add(myGrid.getNode(origin.getX() + direction.x, origin.getY() - 1));
             }
         } else {
             //Direction is diagonal
-            if (!myGrid.getNode(origin.getX() - direction.x, origin.getY()).isPassable() && myGrid.getNode(origin.getX() - direction.x, origin.getY() + direction.y).isPassable()) {
+            if (myGrid.getNode(origin.getX() - direction.x, origin.getY()) != null && !myGrid.getNode(origin.getX() - direction.x, origin.getY()).isPassable() && myGrid.getNode(origin.getX() - direction.x, origin.getY() + direction.y) != null && myGrid.getNode(origin.getX() - direction.x, origin.getY() + direction.y).isPassable()) {
                 pathNodes.add(myGrid.getNode(origin.getX() - direction.x, origin.getY() + direction.y));
             }
-            if (!myGrid.getNode(origin.getX(), origin.getY() - direction.y).isPassable() && myGrid.getNode(origin.getX() + direction.x, origin.getY() - direction.y).isPassable()) {
+            if (myGrid.getNode(origin.getX(), origin.getY() - direction.y) != null && !myGrid.getNode(origin.getX(), origin.getY() - direction.y).isPassable() && myGrid.getNode(origin.getX() + direction.x, origin.getY() - direction.y) != null && myGrid.getNode(origin.getX() + direction.x, origin.getY() - direction.y).isPassable()) {
                 pathNodes.add(myGrid.getNode(origin.getX() + direction.x, origin.getY() - direction.y));
             }
         }

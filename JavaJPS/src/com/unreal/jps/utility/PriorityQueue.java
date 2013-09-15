@@ -39,4 +39,6 @@ public interface PriorityQueue {
      * @return the size of the queue
      */
     public int size();
+    
+    public boolean contains(Comparable comp);
 }//end interface
