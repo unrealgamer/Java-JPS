@@ -16,6 +16,7 @@ public class Grid {
     private GridNode[][] myNodes;
     private GridNode startNode;
     private GridNode endNode;
+    private PathFinderTwo pathFinder;
     
     public Grid(int width, int height)
     {
@@ -25,7 +26,8 @@ public class Grid {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Grid.class.getName()).log(Level.SEVERE, null, ex);
         }
-        PathFinder.jumpPointSearch(this);
+        pathFinder = new PathFinderTwo(this, startNode, endNode);
+        printPath(pathFinder.jumpPointSearch());
     }
     
     public GridNode getNode(int x, int y)
@@ -37,7 +39,7 @@ public class Grid {
     
     public boolean isPassable(int x, int y)
     {
-        if(x > this.myNodes.length || x < 0 || y > this.myNodes[0].length || y < 0)
+        if(x >= this.myNodes.length || x < 0 || y >= this.myNodes[0].length || y < 0)
             return false;
         return this.myNodes[x][y].isPassable();
     }

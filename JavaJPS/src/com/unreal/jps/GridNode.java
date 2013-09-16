@@ -7,12 +7,15 @@ package com.unreal.jps;
 public class GridNode extends Node{
 
     private int myX, myY;
+    private int gScore, hScore;
     
     public GridNode(int x, int y, boolean isPassable)
     {
         this.myX = x;
         this.myY = y;
         this.setPassable(isPassable);
+        this.gScore = 0;
+        this.hScore = 0;
     }
     
     public GridNode(int x, int y, boolean isPassable, Node parent)
@@ -21,6 +24,8 @@ public class GridNode extends Node{
         this.myY = y;
         this.setPassable(isPassable);
         this.setParent(parent);
+        this.gScore = 0;
+        this.hScore = 0;
     }
 
     public void setLocation(int x, int y) {
@@ -37,12 +42,27 @@ public class GridNode extends Node{
     
     @Override
     public int getFScore() {
-        return 5;
+        return hScore + gScore;
+    }
+    
+    public void setHScore(int hscore)
+    {
+        this.hScore = hscore;
+    }
+    
+    public void setGScore(int gScore)
+    {
+        this.gScore = gScore;
+    }
+    
+    public int getGScore()
+    {
+        return this.gScore;
     }
     
     public String toString()
     {
-        return this.myX + " " + this.myY;
+        return "X: " + this.myX + " Y: " + this.myY + " F: " + getFScore() + " G: " + getGScore();
     }
     
 }
