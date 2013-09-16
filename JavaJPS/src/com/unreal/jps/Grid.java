@@ -16,7 +16,7 @@ public class Grid {
     private GridNode[][] myNodes;
     private GridNode startNode;
     private GridNode endNode;
-    private PathFinderTwo pathFinder;
+    private PathFinder pathFinder;
     
     public Grid(int width, int height)
     {
@@ -26,8 +26,9 @@ public class Grid {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Grid.class.getName()).log(Level.SEVERE, null, ex);
         }
-        pathFinder = new PathFinderTwo(this, startNode, endNode);
+        pathFinder = new PathFinder(this, startNode, endNode);
         printPath(pathFinder.jumpPointSearch());
+        printPath(pathFinder.aStarPathFind());
     }
     
     public GridNode getNode(int x, int y)
