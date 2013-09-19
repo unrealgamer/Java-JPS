@@ -10,11 +10,12 @@ import com.unreal.jps.utility.PriorityQueue;
 import java.util.ArrayList;
 
 /**
- *
+ * Deprecated; used as reference and starting point; almost works
  * @author Adrian
  */
-public class PathFinderOld {
 
+public class PathFinderOld {
+    /*
     public static void jumpPointSearch(Grid theGrid) {
         PriorityQueue openList = new BinaryHeap();
 
@@ -128,5 +129,5 @@ public class PathFinderOld {
         }
         return pathNodes;
     }
-
+*/
 }

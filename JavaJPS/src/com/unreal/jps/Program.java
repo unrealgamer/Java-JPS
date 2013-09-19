@@ -9,10 +9,14 @@ import com.unreal.jps.utility.PriorityQueue;
  */
 public class Program {
     
+    /**
+     * Starts the program by creating a new grid that automatically path finds
+     * @param args 
+     */
     public static void main(String[] args)
     {
        Grid g = new Grid(5, 5);
-    }
+    }//end Main
     
     /**
      * Just testing out the PriorityQueue and BinaryHeap stack classes. (Can be removed)
@@ -42,6 +46,6 @@ public class Program {
         System.out.println("Popped Value: " + pq.pop()); System.out.println("New Queue: " + pq);
         System.out.println("Popped Value: " + pq.pop()); System.out.println("New Queue: " + pq);
         System.out.println("Popped Value: " + pq.pop()); System.out.println("New Queue: " + pq);
-    }
+    }//end pqTests
     
-}
+}//end Program

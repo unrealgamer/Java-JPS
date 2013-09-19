@@ -17,44 +17,74 @@ public class Grid {
     private GridNode startNode;
     private GridNode endNode;
     private PathFinder pathFinder;
-    
+    /**
+     * Default Constructor
+     * @param width The Width of the grid
+     * @param height The height of the grid
+     */
     public Grid(int width, int height)
     {
         this.myNodes = new GridNode[width][height];
         try {
-            readGrid("C:\\Users\\Shane\\Desktop\\grid.txt");
+            readGrid("grid.txt");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Grid.class.getName()).log(Level.SEVERE, null, ex);
         }
         pathFinder = new PathFinder(this, startNode, endNode);
         printPath(pathFinder.jumpPointSearch());
         printPath(pathFinder.aStarPathFind());
-    }
+    }//end constructor
     
+    /**
+     * Gets a node at the specified location in the grid
+     * @param x
+     * @param y
+     * @return The node at the x,y coordinates
+     */
     public GridNode getNode(int x, int y)
     {
         if(x >= this.myNodes.length || x < 0 || y >= this.myNodes[0].length || y < 0)
             return null;
         return this.myNodes[x][y];
-    }
+    }//end getNode
     
+    /**
+     * Checks if a node is passable at the specified location in the grid
+     * @param x
+     * @param y
+     * @return True if passable, false otherwise
+     */
     public boolean isPassable(int x, int y)
     {
         if(x >= this.myNodes.length || x < 0 || y >= this.myNodes[0].length || y < 0)
             return false;
         return this.myNodes[x][y].isPassable();
-    }
+    }//end isPassable
     
+    /**
+     * Retrieves the starting node for the path
+     * @return 
+     */
     public GridNode getStart()
     {
         return startNode;
-    }
+    }//end getStart
     
+    /**
+     * Retrieves the ending node for the path
+     * @return 
+     */
     public GridNode getEnd()
     {
         return endNode;
-    }
+    }//end getEnd
     
+    
+    /**
+     * Reads a file and creates a grid based on the data in the file
+     * @param fileName The location of the file to read
+     * @throws FileNotFoundException 
+     */
     public void readGrid(String fileName) throws FileNotFoundException
     {   Scanner in = new Scanner(new File(fileName));
         
@@ -69,18 +99,18 @@ public class Grid {
         {
             int type = in.nextInt();
             if(type == 2) { //Start
-                this.myNodes[r][c] = new GridNode(r,c,true, null);
+                this.myNodes[r][c] = new GridNode(r,c,true);
                 this.startNode = this.myNodes[r][c];
             }
             else if(type == 3) { //end
-                this.myNodes[r][c] = new GridNode(r,c,true, null);
+                this.myNodes[r][c] = new GridNode(r,c,true);
                 this.endNode = this.myNodes[r][c];
             }
             else if(type == 0) {
-                this.myNodes[r][c] = new GridNode(r, c, true, null);
+                this.myNodes[r][c] = new GridNode(r, c, true);
             }
             else
-                this.myNodes[r][c] = new GridNode(r, c, false, null);
+                this.myNodes[r][c] = new GridNode(r, c, false);
             r++;
             if(r >= width)
             {
@@ -89,8 +119,12 @@ public class Grid {
             }
         }
         
-    }
+    }//end readGrid
  
+    /**
+     * Prints the grid with the path highlighted with "X"s at each node that includes the path
+     * @param thePath The path to print
+     */
     public void printPath(ArrayList<GridNode> thePath)
     {
         String out = "";
@@ -119,7 +153,12 @@ public class Grid {
             out += "\n";
         }
         System.out.println(out);
-    }
+    }//end printPath
+    
+    /**
+     * To string method for this class. It just prints the grid
+     * @return 
+     */
     public String toString()
     {
         String out = "";
@@ -144,6 +183,6 @@ public class Grid {
             out += "\n";
         }
         return out;
-    }
+    }//end toString
     
-}
+}//end Grid

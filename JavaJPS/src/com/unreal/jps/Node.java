@@ -34,15 +34,23 @@ public abstract class Node implements Comparable{
         this.myParentNode = parentNode;
     }//end setParent
     
+    /**
+     * Gets whether this node is passable
+     * @return True if passable, false otherwise
+     */
     public boolean isPassable()
     {
         return this.isPassable;
-    }
+    }//end isPassable
     
+    /**
+     * Sets whether this node is passable
+     * @param val 
+     */
     public void setPassable(boolean val)
     {
         this.isPassable = val;
-    }
+    }//end setPassable
     
     @Override
     public int compareTo(Object t) {
@@ -54,5 +62,5 @@ public abstract class Node implements Comparable{
         else if(getFScore() > other.getFScore())
             return 1;
         else return 0;
-    } 
-}
+    }//end compareTo
+}//end Node

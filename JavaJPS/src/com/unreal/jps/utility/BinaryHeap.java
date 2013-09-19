@@ -14,16 +14,23 @@ public class BinaryHeap implements PriorityQueue {
 
     private BinaryHeap.ArrayListOne<Comparable> myList;
     
+    /**
+     * Default constructor; creates a new empty list
+     */
     public BinaryHeap()
     {
         myList = new BinaryHeap.ArrayListOne<>();
-    }
+    }//end constructor
     
+    /**
+     * Creates a new heap with a starting item
+     * @param initialNode 
+     */
     public BinaryHeap(Comparable initialNode)
     {
         myList = new BinaryHeap.ArrayListOne<>();
         myList.add(1, initialNode);
-    }
+    }//end copnstructor
     
     @Override
     public void add(Comparable comp) {

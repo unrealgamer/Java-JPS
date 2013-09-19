@@ -48,7 +48,8 @@ public class PathFinder {
             addNeighbors(curNode, true);
         }
         return null;
-    }
+    }//end aStarPathFind
+    
     /**
      * Used by the A* search to add each nodes neighbors to the open list if conditions are met
      * @param node The node to find neighbors for
@@ -79,7 +80,7 @@ public class PathFinder {
                 }
             }
         }
-    }
+    }//end addNeighbors
     
     /**
      * Calculates the given node's score using the Manhattan distance formula
@@ -94,7 +95,7 @@ public class PathFinder {
         GridNode parent = (GridNode)node.getParent();
         
         node.setGScore(parent.getGScore() + calcuateGScore(node, parent));   
-    }
+    }//end calculateNodeScore
     
     /**
      * Will calculate the gScore between two nodes
@@ -111,7 +112,7 @@ public class PathFinder {
                 return Math.abs(10 * Math.max(dx, dy));
             else                   // Diaganol
                 return Math.abs(14 * Math.max(dx, dy));
-    }
+    }//end calculateGScore
     
     /**
      * Finds the shortest path between two nodes using the Jump Point Search Algorithm
@@ -135,7 +136,7 @@ public class PathFinder {
         }
 
         return null;
-    }
+    }//calculate jumpPointSearch
     
     /**
      * Finds the successors the the curNode and adds them to the openlist
@@ -170,7 +171,8 @@ public class PathFinder {
                 
             }
         }
-    }
+    }//end identifySuccessors
+    
     /**
      * Finds the next node heading in a given direction that has a forced neighbor or is significant
      * @param curNode The node we are starting at
@@ -231,7 +233,7 @@ public class PathFinder {
             }
         }
         return jump(nextNode, dx, dy); //No forced neighbors so we are continuing down the path
-    }
+    }//end jump
     
     /**
      * Goes through each parent of each subsequent node and adds them to a list 
@@ -249,7 +251,7 @@ public class PathFinder {
             parent = (GridNode)parent.getParent();
         }
         return thePath;
-    }
+    }//end backTrace
     
     /**
      * Check if the neighbor of the given node is valid
@@ -260,6 +262,6 @@ public class PathFinder {
     private boolean isValidNeighbor(GridNode node, GridNode neighbor)
     {
         return neighbor != null && neighbor.isPassable() && !closedList.contains(neighbor) && !neighbor.equals(node);
-    }
+    }//end isValidNeighbor
     
-}
+}//end PathFinder

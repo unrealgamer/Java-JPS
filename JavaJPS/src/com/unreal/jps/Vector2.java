@@ -13,13 +13,22 @@ public class Vector2 {
 
     public int x, y;
 
+    /**
+     * Default constructor
+     * @param inX 
+     * @param inY 
+     */
     public Vector2(int inX, int inY) {
         x = inX;
         y = inY;
-    }
+    }//end constructor
     
+    /**
+     * Calculates and returns the magnitude of this vector
+     * @return 
+     */
     public double getMagnitude()
     {
         return Math.sqrt(this.x^2 + this.y^2);
-    }
-}
+    }//end getMagnitude
+}//end Vector2
